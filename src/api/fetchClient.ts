@@ -22,9 +22,7 @@ export const configureFetchClient = (config: {
 };
 
 const buildUrl = (path: string, params?: Record<string, string | number | boolean | undefined>): string => {
-  const base = BASE_URL.startsWith("http") ? BASE_URL : window.location.origin;
-  const url = new URL(path, base);
-  
+  const url = new URL(BASE_URL + path);
   if (params) {
     Object.entries(params).forEach(([key, value]) => {
       if (value !== undefined && value !== "") {
